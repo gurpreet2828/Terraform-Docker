@@ -1,5 +1,13 @@
 # Deploy Ghost Blog and MySQL with Docker and Terraform on AWS infrastructure
 
+## Summary
+
+This project involves deploying a Ghost Blog with a MySQL database using Docker, Docker Compose and Terraform on an AWS EC2 instance running Ubuntu.
+
+The infrastructure is provisioned through Terraform, which automates the setup of the EC2 instance and SSH key configuration. Docker and Docker Compose are used to containerize and orchestrate the Ghost and MySQL services, enabling efficient application management. The AWS CLI is utilized for secure interaction with AWS services, while tools like VS Code and SCP assist in code transfer and editing.
+
+During implementation, several issues were encountered and resolved, including AWS CLI configuration problems, SSH permission errors, Git initialization issues, and Docker service failures. Troubleshooting involved checking file permissions, correcting SSH key paths, installing necessary packages, and validating Docker Compose syntax. Successful deployment was verified through Terraform commands and by accessing the blog via the EC2 public IP. Key Docker commands were used to manage containers, ensuring the blog and database were running as expected.
+
 ## Setup Overview
 
 The document outlines the steps to deploy a Ghost Blog and MySQL using Docker, Docker Compose and Terraform on an AWS EC2 instance. Key tools include:
@@ -66,11 +74,11 @@ Fix:
 
 **Check not running containers:** docker ps -a
 
-**Run container:** docker run ghost-blog
+**Restart container:** docker start ghost-blog
 
-**View logs for errors:** docker logs <container-name>
+**View logs for errors:** docker logs ghost-blog
 
-**Restart services:** docker compose up -d
+**Restart services:** docker-compose up -d
 
 **7. Issue: Errors in docker-compose.yml syntax**
 
@@ -112,7 +120,7 @@ sudo chmod u+rwx /home/administrator/Terraform-Docker
 
 ## Step2: Install Terraform on Ubuntu
 
-**1. Update and install dependencies**
+**1.Update and install dependencies**
 
 sudo apt update && sudo apt install -y gnupg software-properties-common curl
 
