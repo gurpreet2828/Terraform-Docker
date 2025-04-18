@@ -90,7 +90,7 @@ scp -r -v "C:\Users\Gurpreet\OneDrive\Desktop\York Univ\Assignments\Assignment 4
 
 Enter your password of ubuntu user
 
-![Image1](https://github.com/gurpreet2828/terraform-ansible/blob/7484934dcf9a99bdeab89b7e0bf4dd0633f1d990/Images/Image1.png)
+![Image1](https://github.com/gurpreet2828/Terraform-Docker/blob/fe668ab95c2b25c233b90da636e62a15a3cf9b05/Images/Image1.png)
 
 It shows the following screen after transfer
 
@@ -180,7 +180,11 @@ After Creating
 
 Click on account name - Select Security Credentials
 
+![Image27](https://github.com/gurpreet2828/Terraform-Docker/blob/fe668ab95c2b25c233b90da636e62a15a3cf9b05/Images/Image27.png)
+
 Click Create access key.
+
+![Image28](https://github.com/gurpreet2828/Terraform-Docker/blob/fe668ab95c2b25c233b90da636e62a15a3cf9b05/Images/Image28.png)
 
 Note: Download the key file or copy the Access Key ID & Secret Access Key (Secret Key is shown only once!).
 
@@ -355,6 +359,8 @@ To delete the container
 **Docker search <image_name>**
 
 Ex: docker search ubuntu: it search all the images regarding ubuntu present on ubuntu hub
+
+![Image26](https://github.com/gurpreet2828/Terraform-Docker/blob/fe668ab95c2b25c233b90da636e62a15a3cf9b05/Images/Image26.png)
 
 **Docker exec -it <container_name>**
 
