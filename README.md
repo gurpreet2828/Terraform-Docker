@@ -4,17 +4,17 @@
 
 The document outlines the steps to deploy a Ghost Blog and MySQL using Docker, Docker Compose and Terraform on an AWS EC2 instance. Key tools include:
 
-• Terraform: For infrastructure provisioning.
+**- Terraform:** For infrastructure provisioning.
 
-• Docker/Docker Compose: For application containerization.
+**- Docker/Docker Compose:** For application containerization.
 
-• AWS CLI: For interaction with AWS services.
+**- AWS CLI:** For interaction with AWS services.
 
-• vsCode: Code Editor
+**- vsCode:** Code Editor
 
-• Ubuntu Linux environment
+**- Ubuntu Linux environment**
 
-• AWS account with access keys
+**- AWS account with access keys**
 
 ### Troubleshooting and errors which I faced during this project implementation
 
@@ -90,7 +90,7 @@ scp -r -v "C:\Users\Gurpreet\OneDrive\Desktop\York Univ\Assignments\Assignment 4
 
 Enter your password of ubuntu user
 
- ![Image1](https://github.com/gurpreet2828/terraform-ansible/blob/7484934dcf9a99bdeab89b7e0bf4dd0633f1d990/Images/Image1.png)
+![Image1](https://github.com/gurpreet2828/terraform-ansible/blob/7484934dcf9a99bdeab89b7e0bf4dd0633f1d990/Images/Image1.png)
 
 It shows the following screen after transfer
 
