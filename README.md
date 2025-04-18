@@ -90,13 +90,19 @@ scp -r -v "C:\Users\Gurpreet\OneDrive\Desktop\York Univ\Assignments\Assignment 4
 
 Enter your password of ubuntu user
 
+ ![Image1](https://github.com/gurpreet2828/terraform-ansible/blob/7484934dcf9a99bdeab89b7e0bf4dd0633f1d990/Images/Image1.png)
+
 It shows the following screen after transfer
+
+![Image2](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image2.png)
 
 **Make git repo**
 
 administrator@Cloudinfotech-Server:~/Terraform-Docker$ git init
 
 /home/administrator/Terraform-Docker/. git: Permission denied
+
+![Image3](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image3.png)
 
 Fix Permission
 
@@ -130,18 +136,26 @@ sudo apt install terraform -y
 
 terraform -v
 
+![Image5](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image5.png)
+
 ## Provisioning Infrastructure with Terraform
 
 ### Step1: Terraform init
+
+![Image6](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image6.png)
 
 ### Step 2: Terraform fmt
 
 ### Step 3: Terraform validate
 
+![Image7](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image7.png)
+
 ### Step 4: Terraform plan
 
 After running the terraform plan if you see the above error than you need to configure aws account as it found no aws credentials
 
+![Image8](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image8.png
+)
 ### AWSCLI Install
 
 To install the AWS CLI, run the following command
@@ -157,6 +171,8 @@ Run the following command to check if AWS CLI is installed correctly:
 aws –version
 
 You see the following output
+
+![Image9](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image9.png)
 
 ## Step 3: Create AWS account
 
@@ -192,9 +208,13 @@ aws sts get-caller-identity
 
 If your AWS CLI is properly configured, you'll see a response like this:
 
+![Image10](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image10.png)
+
 **Run Terraform plan**
 
 If it shows the following error
+
+![Image11](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image11.png)
 
 Error: Invalid function argument
 
@@ -208,16 +228,22 @@ Then in this case you must update the location of public and private keys under 
 
 As shown bellow in image
 
+![Image12](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image12.png)
+
 ### 5:Terraform apply
 
 Provision terraform managed infrastructure. You must confirm by trying yes if you would like to continue and perform the actions described to provision your infrastructure resources
 
 If everything works fine at end you will see the public Ip
 
+![Image13](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image13.png)
+
 ## Step 4: Connect to EC2 instance
 
 ssh ec2-user@ 98.80.171.157
 
+![Image14](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image14.png
+)
 Ensure you're using the correct private key and the correct username (ec2-user) and ensure you're using the correct private key with the -i option.
 
 Example
@@ -228,7 +254,9 @@ ssh -i /root/.ssh/docker ec2-user@98.80.171.157
 
 you will see ec2 instance connected remotely with your ubuntu instance
 
-Docker Install on EC2-instance
+![Image15](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image15.png)
+
+### Docker Install on EC2-instance
 
 yum install docker -y
 
@@ -241,6 +269,8 @@ systemctl enable docker
 docker run docker.io/hello-world
 
 Run the hello-world container image to verify installation:
+
+![Image18](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image18.png)
 
 ## Step 5: Docker Compose
 
@@ -256,7 +286,9 @@ Check docker compose install
 
 **docker compose version**
 
-Create Docker Compose File
+![Image19](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image19.png)
+
+**Create Docker Compose File**
 
 vi docker-compose.yml
 
@@ -268,11 +300,15 @@ run
 
 cat docker-compose.yml
 
+![Image20](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image20.png)
+
 If you're working with Docker Compose, you can validate your docker-compose.yml file by running:
 
 docker compose config
 
-if it shows some error as follows than there is syntax error in your yml file 
+if it shows some error as follows than there is syntax error in your yml file
+
+![Image21](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image21.png)
 
 Correct the syntax and correct error of your yml file again run
 
@@ -288,34 +324,38 @@ docker compose up -d
 
 Execute a compose up and use the detached flag to run the container in the background:
 
+![Image22](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image22.png)
+
 Verify that your app is up and running using the public IP address of your EC2 instance
 
+![Image23](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image23.png)
 Some important command of docker
 
-docker info
+**docker info**
 
-docker ps :  shows only running containers
+**docker ps:**  shows only running containers
 
-Docker ps -a
+**Docker ps -a**
 
 It shows all the containers
 
-Docker stop <container_name>:
+![Image25](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image25.png)
+**Docker stop <container_name>:**
 
 To stop the container
 
-Docker rm <container_name> :
+**Docker rm <container_name>:**
 
 To delete the container
 
-Docker start <container_name>:
+**Docker start <container_name>:**
 
  to start the container
 
-Docker search <image_name>
+**Docker search <image_name>**
 
 Ex: docker search ubuntu: it search all the images regarding ubuntu present on ubuntu hub
 
-Docker exec -it <container_name>
+**Docker exec -it <container_name>**
 
 To go inside the running docker
