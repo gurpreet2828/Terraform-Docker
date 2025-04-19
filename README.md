@@ -88,6 +88,13 @@ Run docker compose config to validate
 
 Check for YAML syntax issues like incorrect indentation, colons, or missing values 
 
+**8.Access denied to files**
+After transferring the files from windows to linux you need to give following permission so that we can save and edit files
+
+sudo chown -R administrator:administrator /home/administrator/Terraform-Docker
+
+sudo chmod -R u+rwX /home/administrator/Terraform-Docker
+
 ## Step1: Transfer Terraform and yml files
 
 Use scp to transfer your Terraform and docker files from your local machine to your Ubuntu instance:

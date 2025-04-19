@@ -7,12 +7,12 @@ variable "region" {
 
 variable "ssh_key_public" {
   type    = string
-  default = "C:\\Users\\wessa\\.ssh\\id_rsa.pub"
+  default = "/root/.ssh/docker.pub"
 }
 
 variable "ssh_key_private" {
   type    = string
-  default = "C:\\Users\\wessa\\.ssh\\id_rsa"
+  default = "/root/.ssh/docker"
 }
 
 variable "subnet_ips" {}
