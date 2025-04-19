@@ -86,7 +86,7 @@ Fix:
 
 Run docker compose config to validate
 
-Check for YAML syntax issues like incorrect indentation, colons, or missing values 
+Check for YAML syntax issues like incorrect indentation, colons, or missing values
 
 **8.Access denied to files**
 After transferring the files from windows to linux you need to give following permission so that we can save and edit files
