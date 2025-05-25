@@ -20,25 +20,28 @@ The document outlines the steps to deploy a Ghost Blog and MySQL using Docker, D
 
 **- vsCode:** Code Editor
 
-**- Ubuntu Linux environment**
+**- Ubuntu Linux environment:**
 
-**- AWS account with access keys**
+**- AWS account with access keys:**
 
-### Troubleshooting and errors which I faced during this project implementation
+## Troubleshooting and errors which I faced during this project implementation
 
-**1.AWS CLI Configuration Problems:** If aws configure fails, verify that your AWS Access Key and Secret Key are correct.
+**### 1.AWS CLI Configuration Problems:** If aws configure fails, verify that your AWS Access Key and Secret Key are correct.
 
 - Run aws configure and input your credentials
 
 - Confirm setup with aws sts get-caller-identity
 
-**2.Permission Denied During SSH:** Ensure you're using the correct private key and the correct username (ec2-user).And ensure you're using the correct private key with the -i option.
+**### 2.Permission Denied During SSH:** Ensure you're using the correct private key and the correct username (ec2-user).And ensure you're using the correct private key with the -i option.
 
-Ex: ssh -i /path/to/your-key.pem ec2-user@98.80.171.157
+**Example:** 
+ssh -i /path/to/your-key.pem ec2-user@98.80.171.157
 
+```bash
 ssh -i /root/.ssh/docker ec2-user@98.80.171.157
+```
 
-**3. Permissions Issues during git init**
+### **3. Permissions Issues during git init**
 
 Issue: Git init shows .git: Permission denied
 
@@ -48,13 +51,13 @@ Fix Permission
 
 - sudo chmod u+rwx /home/administrator/Terraform-Docker
 
-**4.Terraform Plan Errors:** Check if the paths to private/public keys are correctly defined in the variables.tf file (under modules -compute - variables.tf)
+**### 4.Terraform Plan Errors:** Check if the paths to private/public keys are correctly defined in the variables.tf file (under modules -compute - variables.tf)
 
-Issue: Invalid SSH key path error like "C:\\Users\\wessa\\.ssh\\id_rsa.pub"
+Issue: Invalid SSH key path error like `"C:\\Users\\wessa\\.ssh\\id_rsa.pub"`
 
-Fix: Update variables.tf to point to a valid Unix-style path, e.g. /root/.ssh/docker.pub
+Fix: Update variables.tf to point to a valid Unix-style path, e.g. `/root/.ssh/docker.pub`
 
-**5.Docker not running**
+### **5.Docker not running**
 
 - sudo systemctl status docker
 
@@ -64,23 +67,23 @@ Fix: Update variables.tf to point to a valid Unix-style path, e.g. /root/.ssh/do
 
 - docker run docker.io/hello-world: Run the hello-world container image to verify installation
 
-**6.Ghost Blog Not Accessible via Public IP**
+### **6.Ghost Blog Not Accessible via Public IP**
 
 Issue: Blog not loading in browser
 
 Fix:
 
-**Check running containers:** docker ps
+**Check running containers:** `docker ps`
 
-**Check not running containers:** docker ps -a
+**Check not running containers:** `docker ps -a`
 
-**Restart container:** docker start ghost-blog
+**Restart container:** `docker start ghost-blog`
 
-**View logs for errors:** docker logs ghost-blog
+**View logs for errors:** `docker logs ghost-blog`
 
-**Restart services:** docker-compose up -d
+**Restart services:** `docker-compose up -d`
 
-**7. Issue: Errors in docker-compose.yml syntax**
+### **7. Issue: Errors in docker-compose.yml syntax**
 
 Fix:
 
@@ -91,17 +94,21 @@ Check for YAML syntax issues like incorrect indentation, colons, or missing valu
 **8.Access denied to files**
 After transferring the files from windows to linux you need to give following permission so that we can save and edit files
 
+```bash
 sudo chown -R administrator:administrator /home/administrator/Terraform-Docker
 
 sudo chmod -R u+rwX /home/administrator/Terraform-Docker
+```
 
 ## Step1: Transfer Terraform and yml files
 
 Use scp to transfer your Terraform and docker files from your local machine to your Ubuntu instance:
 
-Note: Transfer the terraform and docker code from local machine to Linux by running following command on cmd 
+Note: Transfer the terraform and docker code from local machine to Linux by running following command on cmd
 
+```bash
 scp -r -v "C:\Users\Gurpreet\OneDrive\Desktop\York Univ\Assignments\Assignment 4 - Docker\Terraform-Docker" administrator@10.0.0.83:/home/administrator
+```
 
 Enter your password of ubuntu user
 
@@ -111,9 +118,9 @@ It shows the following screen after transfer
 
 ![Image2](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image2.png)
 
-**Make git repo**
+**Make git repo:**
 
-administrator@Cloudinfotech-Server:~/Terraform-Docker$ git init
+administrator@Cloudinfotech-Server:~/Terraform-Docker$ `git init`
 
 /home/administrator/Terraform-Docker/. git: Permission denied
 
@@ -121,51 +128,63 @@ administrator@Cloudinfotech-Server:~/Terraform-Docker$ git init
 
 Fix Permission
 
+```bash
 sudo chown -R administrator:administrator /home/administrator/Terraform-Docker
 
 sudo chmod u+rwx /home/administrator/Terraform-Docker
+```
 
 ## Step2: Install Terraform on Ubuntu
 
-**1.Update and install dependencies**
+### **1. Update and install dependencies**
 
+```bash
 sudo apt update && sudo apt install -y gnupg software-properties-common curl
+```
 
-**2.Add the HashiCorp GPG key**
+### **2.Add the HashiCorp GPG key**
 
+```bash
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
 
-**3.Add the HashiCorp repo**
+### **3.Add the HashiCorp repo**
 
+```bash
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
 
 sudo tee /etc/apt/sources.list.d/hashicorp.list
+```
 
-**4.Update and install Terraform**
+### **4.Update and install Terraform**
 
+```bash
 sudo apt update
 
 sudo apt install terraform -y
+```
 
-**5.Verify installation**
+### **5.Verify installation**
 
+```bash
 terraform -v
+```
 
 ![Image5](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image5.png)
 
 ## Provisioning Infrastructure with Terraform
 
-### Step1: Terraform init
+### Step1: `Terraform init`
 
 ![Image6](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image6.png)
 
-### Step 2: Terraform fmt
+### Step 2: `Terraform fmt`
 
-### Step 3: Terraform validate
+### Step 3: `Terraform validate`
 
 ![Image7](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image7.png)
 
-### Step 4: Terraform plan
+### Step 4: `Terraform plan`
 
 After running the terraform plan if you see the above error than you need to configure aws account as it found no aws credentials
 
@@ -175,15 +194,19 @@ After running the terraform plan if you see the above error than you need to con
 
 To install the AWS CLI, run the following command
 
+```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
 unzip awscliv2.zip
 
 sudo ./aws/install
+```
 
 Run the following command to check if AWS CLI is installed correctly:
 
+```bash
 aws –version
+```
 
 You see the following output
 
@@ -205,9 +228,11 @@ Note: Download the key file or copy the Access Key ID & Secret Access Key (Secre
 
 After install and creating AWS account configure the AWS
 
-**Configure AWS CLI with the New Access Key**
+**Configure AWS CLI with the New Access Key:**
 
+```shell
 aws configure
+```
 
 It will prompt you for:
 
@@ -223,18 +248,21 @@ Enter access key and secret key which you will get from aws account
 
 Check credentials added to aws configure correctly
 
+```bash
 aws sts get-caller-identity
+```
 
 If your AWS CLI is properly configured, you'll see a response like this:
 
 ![Image10](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image10.png)
 
-**Run Terraform plan**
+**Run `Terraform plan`**
 
 If it shows the following error
 
 ![Image11](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image11.png)
 
+```bash
 Error: Invalid function argument
 
 │   on modules/compute/main.tf line 17, in resource "aws_key_pair" "aws-key":
@@ -242,6 +270,7 @@ Error: Invalid function argument
 │     ├────────────────
 │     │ while calling file(path)
 │     │ var.ssh_key_public is "C:\\Users\\wessa\\.ssh\\id_rsa.pub"
+```
 
 Then in this case you must update the location of public and private keys under modules -compute - variables.tf
 
@@ -249,7 +278,7 @@ As shown bellow in image
 
 ![Image12](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image12.png)
 
-### 5:Terraform apply
+### 5:`Terraform apply`
 
 Provision terraform managed infrastructure. You must confirm by trying yes if you would like to continue and perform the actions described to provision your infrastructure resources
 
@@ -259,7 +288,9 @@ If everything works fine at end you will see the public Ip
 
 ## Step 4: Connect to EC2 instance
 
+```shell
 ssh ec2-user@ 98.80.171.157
+```
 
 ![Image14](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image14.png
 )
@@ -267,9 +298,11 @@ Ensure you're using the correct private key and the correct username (ec2-user) 
 
 Example
 
-ssh -i /path/to/your-key.pem ec2-user@98.80.171.157
+`ssh -i /path/to/your-key.pem ec2-user@98.80.171.157`
 
+```bash
 ssh -i /root/.ssh/docker ec2-user@98.80.171.157
+```
 
 you will see ec2 instance connected remotely with your ubuntu instance
 
