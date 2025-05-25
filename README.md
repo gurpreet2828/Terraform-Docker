@@ -51,7 +51,7 @@ Fix Permission
 
 - sudo chmod u+rwx /home/administrator/Terraform-Docker
 
-**### 4.Terraform Plan Errors:** Check if the paths to private/public keys are correctly defined in the variables.tf file (under modules -compute - variables.tf)
+**4.Terraform Plan Errors:** Check if the paths to private/public keys are correctly defined in the variables.tf file (under modules -compute - variables.tf)
 
 Issue: Invalid SSH key path error like `"C:\\Users\\wessa\\.ssh\\id_rsa.pub"`
 
@@ -313,18 +313,25 @@ you will see ec2 instance connected remotely with your ubuntu instance
 
 ```bash
 yum install docker -y
+```
 
+```bash
 systemctl status docker
+```
 
+```bash
 systemctl start docker
+```
 
+```bash
 systemctl enable docker
+```
 
+```bash
 docker run docker.io/hello-world
+```
 
 Run the hello-world container image to verify installation:
-
-```
 
 ![Image18](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image18.png)
 
