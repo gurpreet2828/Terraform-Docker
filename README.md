@@ -26,15 +26,15 @@ The document outlines the steps to deploy a Ghost Blog and MySQL using Docker, D
 
 ## Troubleshooting and errors which I faced during this project implementation
 
-**### 1.AWS CLI Configuration Problems:** If aws configure fails, verify that your AWS Access Key and Secret Key are correct.
+**1.AWS CLI Configuration Problems:** If aws configure fails, verify that your AWS Access Key and Secret Key are correct.
 
 - Run aws configure and input your credentials
 
 - Confirm setup with aws sts get-caller-identity
 
-**### 2.Permission Denied During SSH:** Ensure you're using the correct private key and the correct username (ec2-user).And ensure you're using the correct private key with the -i option.
+**2.Permission Denied During SSH:** Ensure you're using the correct private key and the correct username (ec2-user).And ensure you're using the correct private key with the -i option.
 
-**Example:** 
+**Example:**
 ssh -i /path/to/your-key.pem ec2-user@98.80.171.157
 
 ```bash
@@ -190,6 +190,7 @@ After running the terraform plan if you see the above error than you need to con
 
 ![Image8](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image8.png
 )
+
 ### AWSCLI Install
 
 To install the AWS CLI, run the following command
@@ -310,6 +311,7 @@ you will see ec2 instance connected remotely with your ubuntu instance
 
 ### Docker Install on EC2-instance
 
+```bash
 yum install docker -y
 
 systemctl status docker
@@ -322,27 +324,39 @@ docker run docker.io/hello-world
 
 Run the hello-world container image to verify installation:
 
+```
+
 ![Image18](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image18.png)
 
 ## Step 5: Docker Compose
 
+```bash
 Install docker compose
+```
 
+```bash
 sudo yum install -y py-pip, python3-dev, libffi-dev, openssl-dev, gcc, libc-dev, rust, cargo, make
+```
 
+```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
+```
 
+```bash
 Check docker compose install
+```
 
-**docker compose version**
+**docker compose version:**
 
 ![Image19](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image19.png)
 
-**Create Docker Compose File**
+**Create Docker Compose File:**
 
+```bash
 vi docker-compose.yml
+```
 
 copy and paste yml file
 
@@ -350,13 +364,17 @@ for check it save properly
 
 run
 
+```bash
 cat docker-compose.yml
+```
 
 ![Image20](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image20.png)
 
 If you're working with Docker Compose, you can validate your docker-compose.yml file by running:
 
+```bash
 docker compose config
+```
 
 if it shows some error as follows than there is syntax error in your yml file
 
@@ -364,7 +382,9 @@ if it shows some error as follows than there is syntax error in your yml file
 
 Correct the syntax and correct error of your yml file again run
 
+```bash
 Docker compose config
+```
 
 If it shows the full code than your yml file works fine
 
@@ -372,7 +392,9 @@ Start up the Docker Compose service:
 
 Run
 
+```bash
 docker compose up -d
+```
 
 Execute a compose up and use the detached flag to run the container in the background:
 
@@ -381,13 +403,20 @@ Execute a compose up and use the detached flag to run the container in the backg
 Verify that your app is up and running using the public IP address of your EC2 instance
 
 ![Image23](https://github.com/gurpreet2828/Terraform-Docker/blob/f68bff62e5646f98e8d174bfec18c9d1eac09359/Images/Image23.png)
-Some important command of docker
 
-**docker info**
+**Some important command of docker:**
 
+```bash
+docker info
+```
+
+```bash
 **docker ps:**  shows only running containers
+```
 
+```bash
 **Docker ps -a**
+```
 
 It shows all the containers
 
@@ -396,7 +425,9 @@ It shows all the containers
 
 To stop the container
 
+```bash
 **Docker rm <container_name>:**
+```
 
 To delete the container
 
@@ -404,12 +435,16 @@ To delete the container
 
  to start the container
 
+```bash
 **Docker search <image_name>**
+```
 
 Ex: docker search ubuntu: it search all the images regarding ubuntu present on ubuntu hub
 
 ![Image26](https://github.com/gurpreet2828/Terraform-Docker/blob/fe668ab95c2b25c233b90da636e62a15a3cf9b05/Images/Image26.png)
 
+```bash
 **Docker exec -it <container_name>**
+```
 
 To go inside the running docker
